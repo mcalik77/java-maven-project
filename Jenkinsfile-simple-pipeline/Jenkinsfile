@@ -8,28 +8,28 @@ pipeline {
         maven 'Maven'
     }
     stages {
-        stage("init") {
+        stage('init') {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    gv = load 'Jenkinsfile-simple-pipeline/script.groovy'
                 }
             }
         }
-        stage("build jar") {
+        stage('build jar') {
             steps {
                 script {
                     gv.buildJar()
                 }
             }
         }
-        stage("build image") {
+        stage('build image') {
             steps {
                 script {
                     gv.buildImage()
                 }
             }
         }
-        stage("deploy") {
+        stage('deploy') {
             steps {
                 script {
                     gv.deployApp()
