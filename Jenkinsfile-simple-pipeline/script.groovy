@@ -14,6 +14,7 @@ def buildImage() {
 
 def deployApp() {
     sshagent(['docker-server']) {
+     sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.57.222.80'
      withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
      sh "echo $PASS | docker login -u $USER --password-stdin"
      sh 'docker pull mcalik77/demo-app:jma-2.1'
